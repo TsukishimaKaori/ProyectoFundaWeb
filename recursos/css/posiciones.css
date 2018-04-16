@@ -1,0 +1,8 @@
+table#tabla-principal {
+    border-color: green;
+    border: 1px;
+}
+
+tabla-principal thead {
+    background-color: green;
+}
