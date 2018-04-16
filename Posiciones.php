@@ -1,16 +1,23 @@
 <html>
-    <head>        
+    <head>      
+         <meta charset="UTF-8">
         <title>Alemania </title>
-         <link href="../recursos/css/posiciones.css" rel="stylesheet"/>
+        <link href="../recursos/css/posiciones.css" rel="stylesheet"/>
     </head>
     <body>
-        
-    <?php
-    crearTabla();
-    function crearTabla(){
-        echo '<table border = 2 id = "tabla-principal">
+
+        <?php
+        crearTabla();
+
+        function crearTabla() {
+
+            $equipos = recuperarEquipos();
+
+
+            echo '<table border = 2 id = "tabla-principal">
                 <thead>
                 <tr>
+                    <th>Imagen</th>
                     <th>Equipo</th>
                     <th>PJ</th>
                     <th>PG</th>
@@ -23,9 +30,12 @@
                     <th>Ujuegos</th>
                  </tr>
                 </thead>
-                <tbody>
-                
-                 <tr>
+                <tbody>';
+            foreach ($equipos as $e) {
+                //echo $e . '<BR>';    
+                echo '<tr>
+                    <td>' . $e['Id'] . '</td>
+                    <td>' . $e['Nombre'] . '</td>
                     <td></td>
                     <td></td>
                     <td></td>
@@ -35,57 +45,44 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td></td>
-                 </tr>
-                 
-                </tbody>
+                </tr>';
+            }
+            echo ' </tbody>
             </table>';
-    }
-    
-    
-    function recuperarEquipos(){
-        $con = mysqli_connect('localhost', 'root', '', 'futbol');
-        if(mysqli_connect_errno()){
-            echo "Falló la conexión: ". mysqli_connect_errno();
-            exit();
         }
-        
-        //if(isset($_GET['id'])){
+
+        function recuperarEquipos() {
+            $con = mysqli_connect('localhost', 'root', '', 'futbol');
+            if (mysqli_connect_errno()) {
+                echo "Falló la conexión: " . mysqli_connect_errno();
+                exit();
+            }
+
+            //if(isset($_GET['id'])){
             $strSQL = "SELECT `Id`, `Nombre` FROM `equipos`";
- 
+
             //$strSQL = "SELECT * from juegos";
             // Execute the query.
- 
-            $equipos = array();
+              $equipos = array();
             $query = mysqli_query($con, $strSQL);
-            if(!$query){
+            if (!$query) {
                 echo 'Ha ocurrido un error';
-            }else{
-                while($result = mysqli_fetch_assoc($query))
-                {
-                    $id = $result['Id'];
-                    $nombre = $result['Nombre'];
-                    $equipos[] = $id;
-                    $equipos[] = $nombre;
+            } else {
+                while ($result = mysqli_fetch_assoc($query)) {
+                   $equipos[]=$result;
+                
                 }
             }
- 
+
             // Close the connection
             mysqli_close($con);
             return $equipos;
-        //}
-    }
-    
-    $equipos = recuperarEquipos();
-    
-    foreach($equipos as $e){
-        echo $e . '<BR>';
-    }
-    
-      ?>  
-        
+            //}
+        }
+        ?>  
+
     </body>
 </html>
-        
-        
+
+
 
