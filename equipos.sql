@@ -1,0 +1,18 @@
+INSERT INTO `equipos`(`Id`, `Nombre`) VALUES ("BMU","Bayern München");
+INSERT INTO `equipos`(`Id`, `Nombre`) VALUES ("FCS","FC Schalke 04");
+INSERT INTO `equipos`(`Id`, `Nombre`) VALUES ("BLE","Bayer Leverkusen");
+INSERT INTO `equipos`(`Id`, `Nombre`) VALUES ("BDO","Borussia Dortmund");
+INSERT INTO `equipos`(`Id`, `Nombre`) VALUES ("RBL","RB Leipzig");
+INSERT INTO `equipos`(`Id`, `Nombre`) VALUES ("HOF","1899 Hoffenheim");
+INSERT INTO `equipos`(`Id`, `Nombre`) VALUES ("EFR","Eintracht Frankfurt");
+INSERT INTO `equipos`(`Id`, `Nombre`) VALUES ("BMO","Bor. Mönchengladbach");
+INSERT INTO `equipos`(`Id`, `Nombre`) VALUES ("BSC","Hertha BSC");
+INSERT INTO `equipos`(`Id`, `Nombre`) VALUES ("VFB","VfB Stuttgart");
+INSERT INTO `equipos`(`Id`, `Nombre`) VALUES ("FCA","FC Augsburg");
+INSERT INTO `equipos`(`Id`, `Nombre`) VALUES ("WBR","Werder Bremen");
+INSERT INTO `equipos`(`Id`, `Nombre`) VALUES ("HAN","Hannover 96");
+INSERT INTO `equipos`(`Id`, `Nombre`) VALUES ("VFL","VfL Wolfsburg");
+INSERT INTO `equipos`(`Id`, `Nombre`) VALUES ("SCF","SC Freiburg");
+INSERT INTO `equipos`(`Id`, `Nombre`) VALUES ("FSV","1. FSV Mainz 05");
+INSERT INTO `equipos`(`Id`, `Nombre`) VALUES ("HSV","Hamburger SV");
+INSERT INTO `equipos`(`Id`, `Nombre`) VALUES ("FCK","1. FC Köln");
