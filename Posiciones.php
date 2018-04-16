@@ -2,7 +2,7 @@
     <head>      
          <meta charset="UTF-8">
         <title>Alemania </title>
-        <link href="../recursos/css/posiciones.css" rel="stylesheet"/>
+        <link href="/recursos/css/posiciones.css" rel="stylesheet"/>
     </head>
     <body>
 
@@ -32,9 +32,9 @@
                 </thead>
                 <tbody>';
             foreach ($equipos as $e) {
-                //echo $e . '<BR>';    
+                $ruta =  "imagenes/" . $e['Id'] . ".gif";
                 echo '<tr>
-                    <td>' . $e['Id'] . '</td>
+                    <td><img src = "'.$ruta.'"/></td>
                     <td>' . $e['Nombre'] . '</td>
                     <td></td>
                     <td></td>
