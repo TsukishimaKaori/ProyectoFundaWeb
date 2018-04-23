@@ -13,8 +13,8 @@
 
             $equipos = recuperarEquipos();
 
-
-            echo '<table border = 2 id = "tabla-principal">
+            echo '<div>
+            <table style = "margin: 0 auto" border = 2 id = "tabla-principal">
                 <thead>
                 <tr>
                     <th>Imagen</th>
@@ -48,7 +48,7 @@
                 </tr>';
             }
             echo ' </tbody>
-            </table>';
+            </table></div>';
         }
 
         function recuperarEquipos() {
