@@ -13,6 +13,7 @@
 
             $equipos = recuperarEquipos();
             calcularPosicion();
+            $posiciones = recuperarPosiciones();
 
             echo '<table border = 2 id = "tabla-principal">
                 <thead>
@@ -31,19 +32,19 @@
                  </tr>
                 </thead>
                 <tbody>';
-            foreach ($equipos as $e) {
-                $ruta =  "imagenes/" . $e['Id'] . ".gif";
+            foreach ($posiciones as $p) {
+                $ruta =  "imagenes/" . $p['Equipo'] . ".gif";
                 echo '<tr>
                     <td><img src = "'.$ruta.'"/></td>
-                    <td>' . $e['Nombre'] . '</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>' . $p['Equipo'] . '</td>
+                    <td>' . $p['PJ'] . '</td>
+                    <td>' . $p['PG'] . '</td>
+                    <td>' . $p['PE'] . '</td>
+                    <td>' . $p['PP'] . '</td>
+                    <td>' . $p['GF'] . '</td>
+                    <td>' . $p['GC'] . '</td>
+                    <td>' . $p['Dif'] . '</td>
+                    <td>' . $p['Puntos'] . '</td>
                     <td></td>
                 </tr>';
             }
