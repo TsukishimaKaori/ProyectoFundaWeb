@@ -14,7 +14,7 @@
             $equipos = recuperarEquipos();
 
 
-            echo '<table border = 2 id = "tabla-principal">
+            echo '<table style="margin:0 auto" border = 2 id = "tabla-principal">
                 <thead>
                 <tr>
                     <th>Imagen</th>
