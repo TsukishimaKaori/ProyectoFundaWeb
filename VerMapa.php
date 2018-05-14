@@ -13,12 +13,12 @@
             $Partido = $_GET['Partido'];
         }
         $partido = recuperarUnPartidos($Partido);
-        echo '<div>Jornada ' . $partido['Jornada'] . 'Fecha ' . $partido['Fecha'] . '</div><div><lable>' . $partido['Local'] . ' </lable> <img src = "imagenes/' . $partido['Local'] . '.gif" style=""/>' .
+        echo '<div>Jornada ' . $partido['Jornada'] . ' Fecha ' . $partido['Fecha'] . '</div><div><lable>' . $partido['Local'] . ' </lable> <img src = "imagenes/' . $partido['Local'] . '.gif" style=""/>' .
         $partido['GolesLocal'] . '-' . $partido['GolesVisita'] . '<img src = "imagenes/' . $partido['Visita'] . '.gif" style="margin:0 auto"/><lable>' . $partido['Visita'] . ' </lable><div>';
         ?>
         <div id="map" style="width:400px;height:400px;background:yellow"></div> 
         <span id="duracion"></span>
-
+         
         <?php
         $equipo1 = recuperarEquipos($partido['Local']);
         $equipo2 = recuperarEquipos($partido['Visita']);
@@ -35,6 +35,7 @@
                 var map = new google.maps.Map(document.getElementById('map'), {
                     zoom: 6,
                     center: {lat: waypts[0].location.lat, lng: waypts[0].location.lng}
+                    
                 });
                 //add map
                 directionsDisplay.setMap(map);
@@ -70,6 +71,9 @@
                    
                     anchor: new google.maps.Point(0, 2)
                 };
+               
+
+
 
                 var ayr = {lat: <?php echo $equipo1["Latitud"] ?> , lng: <?php echo $equipo1["Longitud"] ?>};        //Latitud de un lugar        
                 addMarker(ayr, '<?php echo $equipo1["Nombre"] ?>' , map, image);
