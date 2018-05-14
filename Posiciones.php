@@ -83,7 +83,8 @@
         }
 
         function claveBase(){
-            return   $con= mysqli_connect('localhost', 'root', 'root', 'futbol');
+            //return   $con= mysqli_connect('localhost', 'root', 'root', 'futbol');
+            return   $con= mysqli_connect('localhost', 'root', '', 'futbol');
         }
         function recuperarEquipos() {
             $con=claveBase();

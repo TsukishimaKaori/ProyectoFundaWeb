@@ -13,7 +13,7 @@
             $Partido = $_GET['Partido'];
         }
         $partido = recuperarUnPartidos($Partido);
-        echo '<div>Jornada ' . $partido['Jornada'] . 'Fecha ' . $partido['Fecha'] . '</div><div><lable>' . $partido['Local'] . ' </lable> <img src = "imagenes/' . $partido['Local'] . '.gif" style=""/>' .
+        echo '<div>Jornada ' . $partido['Jornada'] . ' Fecha ' . $partido['Fecha'] . '</div><div><lable>' . $partido['Local'] . ' </lable> <img src = "imagenes/' . $partido['Local'] . '.gif" style=""/>' .
         $partido['GolesLocal'] . '-' . $partido['GolesVisita'] . '<img src = "imagenes/' . $partido['Visita'] . '.gif" style="margin:0 auto"/><lable>' . $partido['Visita'] . ' </lable><div>';
         ?>
         <div id="map" style="width:400px;height:400px;background:yellow"></div> 
@@ -102,7 +102,8 @@
         <?php
 
         function claveBase() {
-            return $con = mysqli_connect('localhost', 'root', 'root', 'futbol');
+            //return $con = mysqli_connect('localhost', 'root', 'root', 'futbol');
+            return $con = mysqli_connect('localhost', 'root', '', 'futbol');
         }
 
         function recuperarUnPartidos($id) {

@@ -40,15 +40,17 @@
                  <td>' . $part['Local'] . '</td>  
                  <td>' . $part['Visita'] . '</td>  
                  <td>' . $part['GolesLocal'] . '-' . $part['GolesVisita'] . '</td>  
-                  <td><a href="../ProyectoFundaWeb/VerMapa.php?Partido='. $part['id'] .'""><img src = "imagenes/mapa.png"/></a></td>
-                </tr>';
+                  <td><a href="../ProyectoFundaWeb/VerMapa.php?Partido='. $part['Id'] .'""><img src = "imagenes/mapa.png"/></a></td>';
+                  //<td><a href="../ProyectoFundaWeb/VerMapa.php?Partido='. $part['id'] .'""><img src = "imagenes/mapa.png"/></a></td>';
+                echo '</tr>';
             }
             echo ' </tbody>
             </table>';
         }
 
         function recuperarPartidos($equipo) {
-            $con = mysqli_connect('localhost', 'root', 'root', 'futbol');
+            //$con = mysqli_connect('localhost', 'root', 'root', 'futbol');
+            $con = mysqli_connect('localhost', 'root', '', 'futbol');
             if (mysqli_connect_errno()) {
                 echo "Falló la conexión: " . mysqli_connect_errno();
                 exit();
