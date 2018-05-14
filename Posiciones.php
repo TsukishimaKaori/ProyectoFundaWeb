@@ -27,10 +27,12 @@
             
             $posteado = false;
             $checkeado = [];
-            for ($i = 0; $i < 18; $i++){
+            for ($i = 1; $i < 19; $i++){
                 if(isset($_POST['checked'. $i])){
-                      $checkeado[] = $_POST['checked'.$i];   
-                    $posteado = true;
+                    if($_POST['checked'. $i]){
+                        $checkeado[] = $i - 1;   
+                        $posteado = true;
+                    } 
                 }
             }            
             if($posteado){
@@ -97,7 +99,7 @@
                 
                 echo '<form action="http://localhost:8081/ProyectoFundaWeb/Posiciones.php?numeroFilas=6" method="POST">';
                 echo "<td > <input id = ". $p['Equipo'] . " name = checked". $i . " type = checkbox> </td>";
-             
+                //echo "<input id = ". $p['Equipo'] . " name = checked". $i . " type = hidden value = $i>";
                
                 echo'</tr>';
             }
