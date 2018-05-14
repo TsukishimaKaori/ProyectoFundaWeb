@@ -13,7 +13,7 @@
             $Partido = $_GET['Partido'];
         }
         $partido = recuperarUnPartidos($Partido);
-        echo '<div>Jornada ' . $partido['Jornada'] . 'Fecha ' . $partido['Fecha'] . '</div><div><lable>' . $partido['Local'] . ' </lable> <img src = "imagenes/' . $partido['Local'] . '.gif" style=""/>' .
+        echo '<div>Jornada ' . $partido['Jornada'] . ' Fecha ' . $partido['Fecha'] . '</div><div><lable>' . $partido['Local'] . ' </lable> <img src = "imagenes/' . $partido['Local'] . '.gif" style=""/>' .
         $partido['GolesLocal'] . '-' . $partido['GolesVisita'] . '<img src = "imagenes/' . $partido['Visita'] . '.gif" style="margin:0 auto"/><lable>' . $partido['Visita'] . ' </lable><div>';
         ?>
         <div id="map" style="width:400px;height:400px;background:yellow"></div> 
@@ -28,6 +28,8 @@
                 //get api uses
                 var directionsService = new google.maps.DirectionsService;
                 var directionsDisplay = new google.maps.DirectionsRenderer;
+                directionsDisplay.setMap(map);
+                directionsDisplay.setOptions({suppressMarkers: true});
                 //waypoints to add
                 var waypts = [{location: {lat:<?php echo $equipo1['Latitud'] ?>, lng: <?php echo $equipo1['Longitud'] ?>, }, stopover: true},
                     {location: {lat: <?php echo $equipo2['Latitud'] ?>, lng: <?php echo $equipo2['Longitud'] ?>, }, stopover: true}];
@@ -43,36 +45,38 @@
                 directionsService.route({
                     origin: {lat: waypts[0].location.lat, lng: waypts[0].location.lng}, //db waypoint start
                     destination: {lat: waypts[1].location.lat, lng: waypts[1].location.lng}, //db waypoint end
-                  
+
                     travelMode: google.maps.TravelMode.DRIVING
                 }, function (response, status) {
                     if (status === google.maps.DirectionsStatus.OK) {
                         directionsDisplay.setDirections(response);
                         var route = response.routes[0];
                         var duration = 0;
-                        var distance =0;
+                        var distance = 0;
                         route.legs.forEach(function (leg) {
                             distance += leg.distance.text;
                             duration += leg.duration.value;
                         });
-                        document.getElementById("duracion").innerHTML = "duracion: " + calcularHoras(duration)+" distancia "+distance;
+                        document.getElementById("duracion").innerHTML = "duracion: " + calcularHoras(duration) + " distancia " + distance;
                     } else {
                         window.alert('Ha fallat la comunicació amb el mapa a causa de: ' + status);
                     }
                 });
 
-                var image = { 
+                var image = {
                     url: "imagenes/<?php echo $equipo1['Nombre'] ?>.gif",
-                    
+
                     size: new google.maps.Size(40, 40),
-                  
+
                     origin: new google.maps.Point(0, 0),
-                   
+
                     anchor: new google.maps.Point(0, 2)
                 };
 
-                var ayr = {lat: <?php echo $equipo1["Latitud"] ?> , lng: <?php echo $equipo1["Longitud"] ?>};        //Latitud de un lugar        
-                addMarker(ayr, '<?php echo $equipo1["Nombre"] ?>' , map, image);
+                var ayr = {lat: <?php echo $equipo1["Latitud"] ?>, lng: <?php echo $equipo1["Longitud"] ?>};        //Latitud de un lugar        
+                addMarker(ayr, '<?php echo $equipo1["Nombre"] ?>', map, image);
+
+                //   clearMarkers() ;
 
             }
 
@@ -86,6 +90,10 @@
                     map: map
                 });
             }
+
+
+
+
 
             function calcularHoras(duracion) {
                 var numero = ((duracion / 60) / 60);
@@ -102,8 +110,8 @@
         <?php
 
         function claveBase() {
-           // return $con = mysqli_connect('localhost', 'root', 'root', 'futbol');
-            return $con = mysqli_connect('localhost', 'root', '', 'futbol'); //FRAN
+            //return $con = mysqli_connect('localhost', 'root', 'root', 'futbol');
+            return $con = mysqli_connect('localhost', 'root', '', 'futbol');
         }
 
         function recuperarUnPartidos($id) {

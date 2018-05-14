@@ -76,6 +76,7 @@
                     }
                 }
 
+                echo '<td > <input id = '. $p['Equipo'] . ' type = checkbox> </td>';
                 echo'</tr>';
             }
             echo ' </tbody>
