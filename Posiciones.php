@@ -5,9 +5,12 @@
         <link href="/recursos/css/posiciones.css" rel="stylesheet"/>
     </head>
     <body >
-
-        <?php
+        <div style="text-align: center">
       
+            <a href="../ProyectoFundaWeb/VerMapaCompleto.php?Equipo='. $p['Equipo'] .'"><img src = "../ProyectoFundaWeb/imagenes/BundesLiga.png" style="margin:0 auto"/></a>
+        <h3>BundesLiga</h3>
+        </div>
+        <?php      
         crearTabla();
 
         function crearTabla() {
@@ -20,7 +23,7 @@
             }
             calcularPosicion();
             $posiciones = recuperarPosiciones();
-
+           
             echo '<table style="margin:0 auto" border = 2 id = "tabla-principal">
                 <thead>
                 <tr>
@@ -45,7 +48,7 @@
                 echo '<tr>
                     <td><img src = "' . $ruta . '"/></td>
                    
-                    <td><a href="../ProyectoFundaWeb/VerPartidos.php?Equipo='. $p['Equipo'] .'">' . $p['Equipo'] . '</td>                 
+                    <td><a href="../ProyectoFundaWeb/VerPartidos.php?Equipo='. $p['Equipo'] .'">' . $p['Equipo'] . '</a></td>                 
                     <td>' . $p['PJ'] . '</td>
                     <td>' . $p['PG'] . '</td>
                     <td>' . $p['PE'] . '</td>
