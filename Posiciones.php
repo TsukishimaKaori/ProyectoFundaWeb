@@ -24,6 +24,24 @@
             calcularPosicion();
             $posiciones = recuperarPosiciones();
            
+            $posteado = false;
+            $checkeado = [];
+            for ($i = 1; $i < 19; $i++){
+                if(isset($_POST['checked'. $i])){
+                    if($_POST['checked'. $i]){
+                        $checkeado[] = $i - 1;   
+                        $posteado = true;
+                    } 
+                }
+            }            
+            if($posteado){
+                $pos = [];
+                foreach ($checkeado as $c){
+                    $pos[] = $posiciones[$c];
+                }
+                $posiciones = $pos;
+            }
+            
             echo '<table style="margin:0 auto" border = 2 id = "tabla-principal">
                 <thead>
                 <tr>
@@ -43,7 +61,9 @@
                  </tr>
                 </thead>
                 <tbody>';
+            $i = 0;
             foreach ($posiciones as $p) {
+                $i++;
                 $ruta = "imagenes/" . $p['Equipo'] . ".gif";
                 echo '<tr>
                     <td><img src = "' . $ruta . '"/></td>
@@ -75,12 +95,19 @@
                         }
                     }
                 }
-
-                echo '<td > <input id = '. $p['Equipo'] . ' type = checkbox> </td>';
+                
+                echo '<form action="http://localhost:8081/ProyectoFundaWeb/Posiciones.php?numeroFilas=6" method="POST">';
+                echo "<td > <input id = ". $p['Equipo'] . " name = checked". $i . " type = checkbox> </td>";
+                //echo "<input id = ". $p['Equipo'] . " name = checked". $i . " type = hidden value = $i>";
+               
                 echo'</tr>';
             }
             echo ' </tbody>
             </table>';
+            echo "<div style = 'width: 100%; margin: 0 auto'>";
+            echo '<input type="submit" value="Filtrar"/>';
+            echo '</div>';
+            echo '</form>';
         }
 
         function claveBase(){
