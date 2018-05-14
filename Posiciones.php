@@ -52,7 +52,8 @@
         }
 
         function recuperarEquipos() {
-            $con = mysqli_connect('localhost', 'root', 'root', 'futbol');
+            //$con = mysqli_connect('localhost', 'root', 'root', 'futbol');
+            $con = mysqli_connect('localhost', 'root', '', 'futbol');//Fran
             if (mysqli_connect_errno()) {
                 echo "Falló la conexión: " . mysqli_connect_errno();
                 exit();
