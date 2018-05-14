@@ -24,6 +24,23 @@
             calcularPosicion();
             $posiciones = recuperarPosiciones();
            
+            
+            $posteado = false;
+            $checkeado = [];
+            for ($i = 0; $i < 18; $i++){
+                if(isset($_POST['checked'. $i])){
+                      $checkeado[] = $_POST['checked'.$i];   
+                    $posteado = true;
+                }
+            }            
+            if($posteado){
+                $pos = [];
+                foreach ($checkeado as $c){
+                    $pos[] = $posiciones[$c];
+                }
+                $posiciones = $pos;
+            }
+            
             echo '<table style="margin:0 auto" border = 2 id = "tabla-principal">
                 <thead>
                 <tr>
@@ -43,7 +60,9 @@
                  </tr>
                 </thead>
                 <tbody>';
+            $i = 0;
             foreach ($posiciones as $p) {
+                $i++;
                 $ruta = "imagenes/" . $p['Equipo'] . ".gif";
                 echo '<tr>
                     <td><img src = "' . $ruta . '"/></td>
@@ -75,17 +94,24 @@
                         }
                     }
                 }
-
-                echo '<td > <input id = '. $p['Equipo'] . ' type = checkbox> </td>';
+                
+                echo '<form action="http://localhost:8081/ProyectoFundaWeb/Posiciones.php?numeroFilas=6" method="POST">';
+                echo "<td > <input id = ". $p['Equipo'] . " name = checked". $i . " type = checkbox> </td>";
+             
+               
                 echo'</tr>';
             }
             echo ' </tbody>
-            </table></div>';
+            </table>';
+            echo "<div style = 'width: 100%; margin: 0 auto'>";
+            echo '<input type="submit" value="Filtrar"/>';
+            echo '</div>';
+            echo '</form>';
         }
 
         function claveBase(){
-            // return   $con= mysqli_connect('localhost', 'root', 'root', 'futbol');
-            return   $con= mysqli_connect('localhost', 'root', '', 'futbol'); //FRAN
+            //return   $con= mysqli_connect('localhost', 'root', 'root', 'futbol');
+            return   $con= mysqli_connect('localhost', 'root', '', 'futbol');
         }
         function recuperarEquipos() {
             $con=claveBase();
