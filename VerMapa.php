@@ -18,7 +18,7 @@
         ?>
         <div id="map" style="width:400px;height:400px;background:yellow"></div> 
         <span id="duracion"></span>
-
+         
         <?php
         $equipo1 = recuperarEquipos($partido['Local']);
         $equipo2 = recuperarEquipos($partido['Visita']);
@@ -28,7 +28,6 @@
                 //get api uses
                 var directionsService = new google.maps.DirectionsService;
                 var directionsDisplay = new google.maps.DirectionsRenderer;
-                directionsDisplay.setMap(map);
                 directionsDisplay.setOptions({suppressMarkers: true});
                 //waypoints to add
                 var waypts = [{location: {lat:<?php echo $equipo1['Latitud'] ?>, lng: <?php echo $equipo1['Longitud'] ?>, }, stopover: true},
@@ -37,6 +36,7 @@
                 var map = new google.maps.Map(document.getElementById('map'), {
                     zoom: 6,
                     center: {lat: waypts[0].location.lat, lng: waypts[0].location.lng}
+                    
                 });
                 //add map
                 directionsDisplay.setMap(map);
@@ -49,6 +49,7 @@
                     travelMode: google.maps.TravelMode.DRIVING
                 }, function (response, status) {
                     if (status === google.maps.DirectionsStatus.OK) {
+                        
                         directionsDisplay.setDirections(response);
                         var route = response.routes[0];
                         var duration = 0;
@@ -72,11 +73,23 @@
 
                     anchor: new google.maps.Point(0, 2)
                 };
+               var image2 = { 
+                    url: "imagenes/<?php echo $equipo2['Nombre'] ?>.gif",
+                    
+                    size: new google.maps.Size(40, 40),
+                  
+                    origin: new google.maps.Point(0, 0),
+                   
+                    anchor: new google.maps.Point(0, 2)
+                };
 
-                var ayr = {lat: <?php echo $equipo1["Latitud"] ?>, lng: <?php echo $equipo1["Longitud"] ?>};        //Latitud de un lugar        
-                addMarker(ayr, '<?php echo $equipo1["Nombre"] ?>', map, image);
+              
 
-                //   clearMarkers() ;
+
+                var ayr = {lat: <?php echo $equipo1["Latitud"] ?> , lng: <?php echo $equipo1["Longitud"] ?>};        //Latitud de un lugar        
+                addMarker(ayr, '<?php echo $equipo1["Nombre"] ?>' , map, image);
+                var ayr = {lat: <?php echo $equipo2["Latitud"] ?> , lng: <?php echo $equipo2["Longitud"] ?>};        //Latitud de un lugar        
+                addMarker(ayr, '<?php echo $equipo2["Nombre"] ?>' , map, image2);
 
             }
 
@@ -110,7 +123,7 @@
         <?php
 
         function claveBase() {
-            //return $con = mysqli_connect('localhost', 'root', 'root', 'futbol');
+           // return $con = mysqli_connect('localhost', 'root', 'root', 'futbol');
             return $con = mysqli_connect('localhost', 'root', '', 'futbol');
         }
 

@@ -105,14 +105,14 @@
             }
             echo ' </tbody>
             </table>';
-            echo "<div style = 'width: 100%; margin: 0 auto'>";
+            echo "<div style = 'margin: 0 45%'>";
             echo '<input type="submit" value="Filtrar"/>';
             echo '</div>';
             echo '</form>';
         }
 
         function claveBase(){
-            //return   $con= mysqli_connect('localhost', 'root', 'root', 'futbol');
+           // return   $con= mysqli_connect('localhost', 'root', 'root', 'futbol');
             return   $con= mysqli_connect('localhost', 'root', '', 'futbol');
         }
         function recuperarEquipos() {
