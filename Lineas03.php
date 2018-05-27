@@ -44,10 +44,31 @@ $c = 25; //Tamaño del cuadrito
            ctx.fillText(tamanio,0,x); 
            tamanio = tamanio +1;
 	 }
+
+            
+            
+//            context.fillStyle = "red";
+//context.strokeStyle="black";
+//context.arc(50, 50, 5, 0, 2 * Math.PI, false);
+//context.fill();
+//context.stroke();
          
 	  ctx.closePath();
 	  ctx.stroke();
+          
+           dibujarCirculo(ctx,360,100,10);
+
 	}
+        
+        function dibujarCirculo(ctx,x,y,radio){
+         ctx.beginPath();
+         ctx.arc(x,y,radio,0,2 * Math.PI, false);
+         ctx.fillStyle="#f99";
+         ctx.fill();
+           ctx.closePath();
+        }
+        
+        
   </script>
  </head>
  
