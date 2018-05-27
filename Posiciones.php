@@ -3,14 +3,16 @@
         <meta charset="UTF-8">
         <title>Alemania </title>
         <link href="/recursos/css/posiciones.css" rel="stylesheet"/>
+        <?php require ('Conexion.php'); ?>
     </head>
     <body >
         <div style="text-align: center">
-      
-            <a href="../ProyectoFundaWeb/VerMapaCompleto.php?Equipo='. $p['Equipo'] .'"><img src = "../ProyectoFundaWeb/imagenes/BundesLiga.png" style="margin:0 auto"/></a>
-        <h3>BundesLiga</h3>
+            <a href="../ProyectoFundaWeb/VerMapaCompleto.php?Equipo='. $p['Equipo'] .'">
+                <img src = "../ProyectoFundaWeb/imagenes/BundesLiga.png" style="margin:0 auto"/>
+            </a>
+            <h3>BundesLiga</h3>
         </div>
-        <?php      
+        <?php
         crearTabla();
 
         function crearTabla() {
@@ -23,31 +25,29 @@
             }
             calcularPosicion();
             $posiciones = recuperarPosiciones();
-           
-            
+
             $posteado = false;
             $checkeado = [];
-            for ($i = 1; $i < 19; $i++){
-                if(isset($_POST['checked'. $i])){
-                    if($_POST['checked'. $i]){
-                        $checkeado[] = $i - 1;   
+            for ($i = 1; $i < 19; $i++) {
+                if (isset($_POST['checked' . $i])) {
+                    if ($_POST['checked' . $i]) {
+                        $checkeado[] = $i - 1;
                         $posteado = true;
-                    } 
+                    }
                 }
-            }            
-            if($posteado){
+            }
+            if ($posteado) {
                 $pos = [];
-                foreach ($checkeado as $c){
+                foreach ($checkeado as $c) {
                     $pos[] = $posiciones[$c];
                 }
                 $posiciones = $pos;
             }
-            
+
             echo '<table style="margin:0 auto" border = 2 id = "tabla-principal">
                 <thead>
                 <tr>
-                    <th>Imagen</th>
-                   
+                    <th>Imagen</th>                   
                     <th>Equipo</th>
                     <th>PJ</th>
                     <th>PG</th>
@@ -57,8 +57,15 @@
                     <th>GC</th>
                     <th>Dif</th>
                     <th>Puntos</th>                 
-                    <th colspan="' . $numeroFilas . '"><a href="../ProyectoFundaWeb/Posiciones.php?numeroFilas=' . ($numeroFilas - 1) . '"><img src = "imagenes/izquierda.png"/></a>
-                        Ujuegos ' . $numeroFilas . '<a href="../ProyectoFundaWeb/Posiciones.php?numeroFilas=' . ($numeroFilas + 1) . '"><img src = "imagenes/derecha.png"/></a></th>
+                    <th colspan="' . $numeroFilas . '">'
+                    . '<a href="../ProyectoFundaWeb/Posiciones.php?numeroFilas=' . ($numeroFilas - 1) . '">
+                            <img src = "imagenes/izquierda.png"/>
+                       </a>
+                        Ujuegos ' . $numeroFilas . ''
+                    . '<a href="../ProyectoFundaWeb/Posiciones.php?numeroFilas=' . ($numeroFilas + 1) . '">
+                            <img src = "imagenes/derecha.png"/>
+                       </a>
+                    </th>
                  </tr>
                 </thead>
                 <tbody>';
@@ -69,7 +76,7 @@
                 echo '<tr>
                     <td><img src = "' . $ruta . '"/></td>
                    
-                    <td><a href="../ProyectoFundaWeb/VerPartidos.php?Equipo='. $p['Equipo'] .'">' . $p['Equipo'] . '</a></td>                 
+                    <td><a href="../ProyectoFundaWeb/VerPartidos.php?Equipo=' . $p['Equipo'] . '">' . $p['Equipo'] . '</a></td>                 
                     <td>' . $p['PJ'] . '</td>
                     <td>' . $p['PG'] . '</td>
                     <td>' . $p['PE'] . '</td>
@@ -96,11 +103,11 @@
                         }
                     }
                 }
-                
+
                 echo '<form action="http://localhost:8081/ProyectoFundaWeb/Posiciones.php?numeroFilas=6" method="POST">';
-                echo "<td > <input id = ". $p['Equipo'] . " name = checked". $i . " type = checkbox> </td>";
+                echo "<td > <input id = " . $p['Equipo'] . " name = checked" . $i . " type = checkbox> </td>";
                 //echo "<input id = ". $p['Equipo'] . " name = checked". $i . " type = hidden value = $i>";
-               
+
                 echo'</tr>';
             }
             echo ' </tbody>
@@ -111,17 +118,8 @@
             echo '</form>';
         }
 
-        function claveBase(){
-           // return   $con= mysqli_connect('localhost', 'root', 'root', 'futbol');
-            return   $con= mysqli_connect('localhost', 'root', '', 'futbol');
-        }
         function recuperarEquipos() {
-            $con=claveBase();
-            if (mysqli_connect_errno()) {
-                echo "Falló la conexión: " . mysqli_connect_errno();
-                exit();
-            }
-
+            $con = establecerConexion();
             //if(isset($_GET['id'])){
             $strSQL = "SELECT `Id`, `Nombre` FROM `equipos`";
 
@@ -144,11 +142,7 @@
         }
 
         function recuperarPosiciones() {
-              $con=claveBase();
-            if (mysqli_connect_errno()) {
-                echo "Falló la conexión: " . mysqli_connect_errno();
-                exit();
-            }
+            $con = establecerConexion();
 
             //if(isset($_GET['id'])){
             $strSQL = "SELECT `Equipo`, `PJ`, `PG`, `PE`, `PP`, `GF`, `GC`, `Dif`, `Puntos`, `Ujuegos` "
@@ -173,11 +167,7 @@
         }
 
         function recuperarPartidos($equipo) {
-           $con=claveBase();
-            if (mysqli_connect_errno()) {
-                echo "Falló la conexión: " . mysqli_connect_errno();
-                exit();
-            }
+            $con = establecerConexion();
 
             //if(isset($_GET['id'])){
             $strSQL = "SELECT * FROM `partidos` WHERE Local = '$equipo' or Visita = '$equipo'";
@@ -201,11 +191,7 @@
         }
 
         function recuperarUnPartidos($equipo, $jornada) {
-            $con=claveBase();
-            if (mysqli_connect_errno()) {
-                echo "Falló la conexión: " . mysqli_connect_errno();
-                exit();
-            }
+            $con = establecerConexion();
 
             //if(isset($_GET['id'])){
             $strSQL = "SELECT * FROM `partidos` WHERE Jornada='$jornada' and (Local = '$equipo' or Visita = '$equipo')";
@@ -229,11 +215,7 @@
         }
 
         function borrarPosiciones() {
-            $con=claveBase();
-            if (mysqli_connect_errno()) {
-                echo "Falló la conexión: " . mysqli_connect_errno();
-                exit();
-            }
+            $con = establecerConexion();
 
             $strSQL = "DELETE FROM `posiciones`";
             $query = mysqli_query($con, $strSQL);
@@ -244,11 +226,7 @@
         }
 
         function insertarPosiciones($posiciones) {
-             $con=claveBase();
-            if (mysqli_connect_errno()) {
-                echo "Falló la conexión: " . mysqli_connect_errno();
-                exit();
-            }
+            $con = establecerConexion();
 
             $strSQL = "INSERT INTO `posiciones`(`Equipo`, `PJ`, `PG`, `PE`, `PP`, `GF`, `GC`, `Dif`, `Puntos`, `Ujuegos`) "
                     . "VALUES ('$posiciones[0]',$posiciones[1],$posiciones[2],$posiciones[3],$posiciones[4],$posiciones[5],"

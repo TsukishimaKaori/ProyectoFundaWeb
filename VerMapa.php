@@ -1,10 +1,9 @@
-
-
 <html>
     <head>      
         <meta charset="UTF-8">
         <title>Alemania </title>
         <link href="/recursos/css/posiciones.css" rel="stylesheet"/>
+        <?php   require ('Conexion.php'); ?>
     </head>
     <body >
         <?php
@@ -82,6 +81,18 @@
                    
                     anchor: new google.maps.Point(0, 2)
                 };
+               var image2 = { 
+                    url: "imagenes/<?php echo $equipo2['Nombre'] ?>.gif",
+                    
+                    size: new google.maps.Size(40, 40),
+                  
+                    origin: new google.maps.Point(0, 0),
+                   
+                    anchor: new google.maps.Point(0, 2)
+                };
+
+              
+
 
               
 

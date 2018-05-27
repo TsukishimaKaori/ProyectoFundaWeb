@@ -4,6 +4,7 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <title>Marker Labels</title>
+    <?php   require ('Conexion.php'); ?>
     <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
@@ -51,7 +52,7 @@
             //}
         }
     ?>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqhBwQyP78-NXPHNPNw9LGmNEkPUYlDYM"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqhBwQyP78-NXPHNPNw9LGmNEkPUYlDYM"></script>    
     <script>
       function initialize() {
         var alemania = { lat: 51.0000000 , lng:  9.0000000 };     //Latitud del centro del país    
