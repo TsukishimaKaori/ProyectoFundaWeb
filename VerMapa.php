@@ -130,7 +130,7 @@
             }
         </script>
 
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqhBwQyP78-NXPHNPNw9LGmNEkPUYlDYM &callback=initMap"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqhBwQyP78-NXPHNPNw9LGmNEkPUYlDYM&callback=initMap"></script>
         <?php
 
         function claveBase() {
