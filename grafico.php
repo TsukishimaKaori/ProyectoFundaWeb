@@ -1,7 +1,7 @@
 
 <html>
     <head>
-        <meta charset="utf-8"/>
+        <meta charset="utf-8">
         <title>Alemania </title>
         <?php require ('Conexion.php'); ?>
         <?php
