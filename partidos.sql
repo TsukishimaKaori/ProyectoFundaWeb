@@ -295,3 +295,13 @@ INSERT INTO partidos (Id, Fecha, Jornada,  Local, Visita, GolesLocal, GolesVisit
 INSERT INTO partidos (Id, Fecha, Jornada,  Local, Visita, GolesLocal, GolesVisita) VALUES ("296","05/05/2018","33","Borussia Dortmund","1. FSV Mainz 05","1","2");
 INSERT INTO partidos (Id, Fecha, Jornada,  Local, Visita, GolesLocal, GolesVisita) VALUES ("297","05/05/2018","33","RB Leipzig","VfL Wolfsburg","4","1");
 INSERT INTO partidos (Id, Fecha, Jornada,  Local, Visita, GolesLocal, GolesVisita) VALUES ("298","09/04/2018","29","RB Leipzig","Bayer Leverkusen","1","4");
+34. Round
+12/05/2018 	14:30 	1899 Hoffenheim 	- 	Borussia Dortmund 	3:1 (1:0) 		
+	14:30 	Hertha BSC 	- 	RB Leipzig 	2:6 (1:3) 		
+	14:30 	VfL Wolfsburg 	- 	1. FC Köln 	4:1 (1:1) 		
+	14:30 	1. FSV Mainz 05 	- 	Werder Bremen 	1:2 (1:1) 		
+	14:30 	Hamburger SV 	- 	Bor. Mönchengladbach 	2:1 (1:1) 		
+	14:30 	FC Schalke 04 	- 	Eintracht Frankfurt 	1:0 (1:0) 		
+	14:30 	SC Freiburg 	- 	FC Augsburg 	2:0 (0:0) 		
+	14:30 	Bayer Leverkusen 	- 	Hannover 96 	3:2 (2:0) 		
+	14:30 	Bayern München 	- 	VfB Stuttgart 	1:4 (1:2) 

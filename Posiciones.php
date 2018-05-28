@@ -47,9 +47,10 @@
             echo '<table style="margin:0 auto" border = 2 id = "tabla-principal">
                 <thead>
                 <tr>
+                <th>Posicion</th>
                     <th>Imagen</th>                   
                     <th>Equipo</th>
-                    <th>Estadisticas</th>
+                    
                     <th>PJ</th>
                     <th>PG</th>
                     <th>PE</th>
@@ -75,9 +76,11 @@
                 $i++;
                 $ruta = "imagenes/" . $p['Equipo'] . ".gif";
                 echo '<tr>
+                            <td><a href="../ProyectoFundaWeb/grafico.php?Equipo=' . $p['Equipo'] . '">'.$i.'</a></td>
                     <td><img src = "' . $ruta . '"/></td>
+                  
                     <td><a href="../ProyectoFundaWeb/VerPartidos.php?Equipo=' . $p['Equipo'] . '">' . $p['Equipo'] . '</a></td>
-                    <td><a href="../ProyectoFundaWeb/grafico.php?Equipo=' . $p['Equipo'] . '">Posiciones</a></td>                 
+                                   
                     <td>' . $p['PJ'] . '</td>
                     <td>' . $p['PG'] . '</td>
                     <td>' . $p['PE'] . '</td>
