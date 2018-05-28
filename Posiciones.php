@@ -1,6 +1,6 @@
 <html>
     <head>      
-        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>Alemania </title>
         <link href="/recursos/css/posiciones.css" rel="stylesheet"/>
         <?php require ('Conexion.php'); ?>
