@@ -49,6 +49,7 @@
                 <tr>
                     <th>Imagen</th>                   
                     <th>Equipo</th>
+                    <th>Estadisticas</th>
                     <th>PJ</th>
                     <th>PG</th>
                     <th>PE</th>
@@ -75,8 +76,8 @@
                 $ruta = "imagenes/" . $p['Equipo'] . ".gif";
                 echo '<tr>
                     <td><img src = "' . $ruta . '"/></td>
-                   
-                    <td><a href="../ProyectoFundaWeb/VerPartidos.php?Equipo=' . $p['Equipo'] . '">' . $p['Equipo'] . '</a></td>                 
+                    <td><a href="../ProyectoFundaWeb/VerPartidos.php?Equipo=' . $p['Equipo'] . '">' . $p['Equipo'] . '</a></td>
+                    <td><a href="../ProyectoFundaWeb/grafico.php?Equipo=' . $p['Equipo'] . '">Posiciones</a></td>                 
                     <td>' . $p['PJ'] . '</td>
                     <td>' . $p['PG'] . '</td>
                     <td>' . $p['PE'] . '</td>
