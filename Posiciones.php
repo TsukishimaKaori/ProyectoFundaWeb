@@ -166,6 +166,7 @@
 
             // Close the connection
             mysqli_close($con);
+            $posiciones = OrdenadorPosiciones($posiciones);
             return $posiciones;
             //}
         }
@@ -266,6 +267,24 @@
                 insertarPosiciones($posiciones);
             }
         }
+        
+        function OrdenadorPosiciones($jornada) {
+                $numero = count($jornada);
+                $bandera = true;
+                $i = 1;
+                while ($bandera) {
+                    $bandera = false;
+                    for ($j = 0; $j < $numero - 1; $j++) {
+                        if ($jornada[$j]['Puntos'] == $jornada[$j + 1]['Puntos'] && $jornada[$j]['Dif'] < $jornada[$j + 1]['Dif']) {
+                            $tmp = $jornada[$j + 1];
+                            $jornada[$j + 1] = $jornada[$j];
+                            $jornada[$j] = $tmp;
+                            $bandera = true;
+                        }
+                    }
+                }
+                return $jornada;
+            }
 
         function Infopartidos($nombre, $partidos) {
             $detalle = "";
