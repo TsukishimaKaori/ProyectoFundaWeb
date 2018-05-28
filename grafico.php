@@ -116,8 +116,14 @@
         
         ?>    
 
-        <canvas id="canvas" width="<?php echo $CantJornadas * $c + $c; ?>" height="<?php echo $CantEquipos * $c + $c; ?>"</canvas>
-            <?php
+        <div><canvas id="canvas" width="<?php echo $CantJornadas * $c + $c; ?>" height="<?php echo $CantEquipos * $c + $c; ?>"</canvas></div>
+        
+        <?php echo'<h3><a href="../ProyectoFundaWeb/Posiciones.php">
+                            Posiciones
+                       </a></h3>';
+        
+        echo '<h3>QUETZAL</h3>';
+            
 
             function recuperarEquipos() {
                 $con = establecerConexion();

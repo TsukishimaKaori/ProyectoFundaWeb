@@ -8,7 +8,6 @@
     <body>
         <?php     
         crearTabla();
-
         function crearTabla() {
             $equipo = 'Bayern München';
             if (isset($_GET['Equipo'])) {
@@ -41,7 +40,6 @@
             echo ' </tbody>
             </table>';
         }
-
         function recuperarPartidos($equipo) {
             // $con = mysqli_connect('localhost', 'root', 'root', 'futbol');
             $con = establecerConexion();
@@ -67,7 +65,9 @@
             //}
         }
         ?>
-
+        
+        <h3 style = "text-align: center"><a href="../ProyectoFundaWeb/Posiciones.php">Posiciones</a></h3>        
+        <h3 style = "text-align: center">QUETZAL</h3>
     </body>
 </html>
 
