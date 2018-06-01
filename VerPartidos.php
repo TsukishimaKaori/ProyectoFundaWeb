@@ -3,10 +3,10 @@
         <meta charset="UTF-8">
         <title>Alemania</title>
         <link href="/recursos/css/posiciones.css" rel="stylesheet"/>
-        <?php   require ('Conexion.php'); ?>
+        <?php require ('Conexion.php'); ?>
     </head>
     <body>
-        <?php     
+        <?php
         crearTabla();
 
         function crearTabla() {
@@ -35,8 +35,10 @@
                  <td>' . $part['Local'] . '</td>  
                  <td>' . $part['Visita'] . '</td>  
                  <td>' . $part['GolesLocal'] . '-' . $part['GolesVisita'] . '</td>  
-                  <td><a href="../ProyectoFundaWeb/VerMapa.php?Partido=' . $part['Id'] . '""><img src = "imagenes/mapa.png"/></a></td>';
-                //<td><a href="../ProyectoFundaWeb/VerMapa.php?Partido='. $part['id'] .'""><img src = "imagenes/mapa.png"/></a></td>';
+                  <td><a href="../ProyectoFundaWeb/VerMapa.php?Partido=' . $part['Id'] . '""><img src = "imagenes/mapa.png"/></a></td>'.
+                        '<td>'. CalculaDistancia($part['Local'] , $part['Visita']).'</td>';
+                  
+//<td><a href="../ProyectoFundaWeb/VerMapa.php?Partido='. $part['id'] .'""><img src = "imagenes/mapa.png"/></a></td>';
                 echo '</tr>';
             }
             echo ' </tbody>
@@ -67,8 +69,36 @@
             return $equipos;
             //}
         }
+
+        function CalculaDistancia($EquipoLocal, $EquipoVisita) {
+            $Con = establecerConexion();
+            $Distancia = 0;
+            $sql = "SELECT * FROM equipos WHERE nombre = '$EquipoLocal'";
+            if ($oRs = mysqli_query($Con, $sql)) {
+                $row = mysqli_fetch_array($oRs);
+                $LatL = $row["Latitud"];
+                $LonL = $row["Longitud"];
+            } else {
+                Echo "Error: No pudo ejecutar el $sql<br>";
+                return -1;
+            }
+
+            $sql = "SELECT * FROM equipos WHERE nombre = '$EquipoVisita'";
+            if ($oRs = mysqli_query($Con, $sql)) {
+                $row = mysqli_fetch_array($oRs);
+                $LatV = $row["Latitud"];
+                $LonV = $row["Longitud"];
+            } else {
+                Echo "Error: No pudo ejecutar el $sql<br>";
+                return -1;
+            }
+            $Distancia = ( 6371 * acos((cos(deg2rad($LatL)) ) * (cos(deg2rad($LatV))) * (cos(deg2rad($LonV) - deg2rad($LonL)) ) + ((sin(deg2rad($LatL))) * (sin(deg2rad($LatV))))) );
+            return $Distancia;
+        }
         ?>
 
+        <h3 style = "text-align: center"><a href="../ProyectoFundaWeb/Posiciones.php">Posiciones</a></h3>        
+        <h3 style = "text-align: center">QUETZAL</h3>
     </body>
 </html>
 
