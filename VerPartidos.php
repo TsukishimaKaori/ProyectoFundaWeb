@@ -22,7 +22,8 @@
                     <th>Local</th>
                     <th>Visita</th>
                     <th>Marcador</th>
-                    <th>ruta</th>
+                    <th>Ruta</th>
+                    <th>Km</th>
                  </tr>
                 </thead>
                 <tbody>';
