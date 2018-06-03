@@ -9,7 +9,11 @@
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       #map {
-        height: 100%;
+        height: 70%;
+        width: 60%;
+        text-align: center;
+        margin: 2% auto;
+        
       }
       /* Optional: Makes the sample page fill the window. */
       html, body {
@@ -96,9 +100,9 @@
       google.maps.event.addDomListener(window, 'load', initialize);
     </script>
   </head>
-  <body>
-     
-    <div id="map"></div>
+  <body style="background-color:#e6e6fa">
+      <h1 style="text-align: center">Bunges Liga</h1>
+    <div id="map" style ="border-style: solid ;"></div>
   </body>
 </html>
 
