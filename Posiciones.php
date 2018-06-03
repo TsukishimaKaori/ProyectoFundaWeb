@@ -131,14 +131,13 @@
             echo '</div>';
             echo '</form>';
             echo '<div style = "margin: 0 44%;"><a href ="../ProyectoFundaWeb/Posiciones.php">Todos los resultados</a></div>';
-            echo '<div style = "margin: 0 43%;"><a href ="../ProyectoFundaWeb/Posiciones.php">Distancia en kilómetros</a></div>';
+            echo '<div style = "margin: 0 43%;"><a href ="../ProyectoFundaWeb/DistanciaKilometros.php">Distancia en kilómetros</a></div>';
             }
 
         function recuperarEquipos() {
             $con = establecerConexion();
             //if(isset($_GET['id'])){
             $strSQL = "SELECT `Id`, `Nombre` FROM `equipos`";
-
             //$strSQL = "SELECT * from juegos";
             // Execute the query.
             $equipos = array();
