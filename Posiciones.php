@@ -5,7 +5,7 @@
         <link href="/recursos/css/posiciones.css" rel="stylesheet"/>
         <?php require ('Conexion.php'); ?>
     </head>
-    <body >
+    <body style = "background-color: #e6e6fa">
         <div style="text-align: center">
             <a href="../ProyectoFundaWeb/VerMapaCompleto.php?Equipo='. $p['Equipo'] .'">
                 <img src = "../ProyectoFundaWeb/imagenes/BundesLiga.png" style="margin:0 auto"/>
@@ -47,10 +47,9 @@
             echo '<table style="margin:0 auto" border = 2 id = "tabla-principal">
                 <thead>
                 <tr>
-                <th>Posicion</th>
-                    <th>Imagen</th>                   
-                    <th>Equipo</th>
-                    
+                    <th></th> 
+                    <th>Posicion</th>                                      
+                    <th>Equipo</th>                    
                     <th>PJ</th>
                     <th>PG</th>
                     <th>PE</th>
@@ -72,23 +71,35 @@
                 </thead>
                 <tbody>';
             $i = 0;
-            foreach ($posiciones as $p) {
+            $c= 0;
+            foreach ($posiciones as $p) {              
                 $i++;
+                $c = $i;
+                if( $posteado == true){
+                $c = $checkeado[$i-1]+1;                
+                }
+                  if($c >1 && $c <5){
+                    $color = '#82e89f';
+                }else if($c >= 5 && $c < 16){
+                     $color = '#d2d2d2';
+                }else if($c >= 16){
+                     $color = '#fe8081';
+                }else {
+                    $color = 'white';
+                }             
                 $ruta = "imagenes/" . $p['Equipo'] . ".gif";
-                echo '<tr>
-                            <td><a href="../ProyectoFundaWeb/grafico.php?Equipo=' . $p['Equipo'] . '">'.$i.'</a></td>
-                    <td><img src = "' . $ruta . '"/></td>
-                  
-                    <td><a href="../ProyectoFundaWeb/VerPartidos.php?Equipo=' . $p['Equipo'] . '">' . $p['Equipo'] . '</a></td>
-                                   
+                echo '<tr style = "background-color:#b8d1f3;">
+                    <td><img src = "' . $ruta . '"/></td>';              
+               echo '<td style = "text-align: center; background-color: '.$color.'"><a href="../ProyectoFundaWeb/grafico.php?Equipo=' . $p['Equipo'] . '">'.$c.'</a></td>            
+                    <td style= "text-align:center;"><a style = "text-decoration:none;" href="../ProyectoFundaWeb/VerPartidos.php?Equipo=' . $p['Equipo'] . '">' . $p['Equipo'] . '</a></td>
                     <td>' . $p['PJ'] . '</td>
                     <td>' . $p['PG'] . '</td>
                     <td>' . $p['PE'] . '</td>
                     <td>' . $p['PP'] . '</td>
-                    <td>' . $p['GF'] . '</td>
-                    <td>' . $p['GC'] . '</td>
+                    <td style = "color:blue;">' . $p['GF'] . '</td>
+                    <td style = "color:red;">' . $p['GC'] . '</td>
                     <td>' . $p['Dif'] . '</td>
-                    <td>' . $p['Puntos'] . '</td>';
+                    <td><b>' . $p['Puntos'] . '</b></td>';
                 $juegos = explode(",", $p['Ujuegos']);
 
                 for ($cont = 0, $numeroJuegos = count($juegos) - 1; $cont < $numeroFilas && $numeroJuegos > 0; $cont++, $numeroJuegos--) {
@@ -111,16 +122,17 @@
                 echo '<form action="http://localhost:8081/ProyectoFundaWeb/Posiciones.php?numeroFilas=6" method="POST">';
                 echo "<td > <input id = " . $p['Equipo'] . " name = checked" . $i . " type = checkbox> </td>";
                 //echo "<input id = ". $p['Equipo'] . " name = checked". $i . " type = hidden value = $i>";
-
                 echo'</tr>';
             }
             echo ' </tbody>
             </table>';
-            echo "<div style = 'margin: 0 45%'>";
-            echo '<input type="submit" value="Filtrar"/>';
+            echo "<div style = 'margin: 0 42.5%'><br>";
+            echo '<input type="submit" value="Comparar varios equipos"/>';
             echo '</div>';
             echo '</form>';
-        }
+            echo '<div style = "margin: 0 44%;"><a href ="../ProyectoFundaWeb/Posiciones.php">Todos los resultados</a></div>';
+            echo '<div style = "margin: 0 43%;"><a href ="../ProyectoFundaWeb/Posiciones.php">Distancia en kilómetros</a></div>';
+            }
 
         function recuperarEquipos() {
             $con = establecerConexion();
