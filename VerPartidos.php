@@ -5,7 +5,7 @@
         <link href="/recursos/css/posiciones.css" rel="stylesheet"/>
         <?php require ('Conexion.php'); ?>
     </head>
-    <body>
+    <body style="background-color: #e6e6fa">
         <?php
         crearTabla();
 
@@ -14,9 +14,11 @@
             if (isset($_GET['Equipo'])) {
                 $equipo = $_GET['Equipo'];
             }
+            echo '<div style ="text-align: center"><img src = "../ProyectoFundaWeb/imagenes/BundesLiga.png" style="margin:0 auto"/></div>';
+            echo '<h3 style ="text-align: center">'.$equipo.'</h3>';
             echo '<table style="margin:0 auto" border = 2 id = "tabla-principal">
                 <thead>
-                <tr>            
+                <tr style = "background-color: #ffffcc">            
                     <th>Jor</th>
                     <th>Fecha</th>
                     <th>Local</th>
@@ -26,7 +28,7 @@
                     <th>Km</th>
                  </tr>
                 </thead>
-                <tbody>';
+                <tbody style = "background-color: white">';
             $partidos = recuperarPartidos($equipo);
             foreach ($partidos as $part) {
                 echo '<tr>

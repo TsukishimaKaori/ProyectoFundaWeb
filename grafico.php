@@ -96,7 +96,7 @@
         </script>
     </head>
 
-    <body onload="draw();">
+    <body style = "background-color: #e6e6fa; " onload="draw();">
         <style>
             h3 {
                 color: black;
@@ -112,7 +112,7 @@
             }  
         </style>
       
-        <?php echo '<h3>'.$equipo.' <img src = "../ProyectoFundaWeb/imagenes/'.$equipo.'.gif" style="margin:0 auto"/></h3>'; 
+        <?php echo '<h3>'.$equipo.' <br><img src = "../ProyectoFundaWeb/imagenes/'.$equipo.'.gif" style="margin:0 auto; widh: 40px; height:40px;"/></h3>'; 
         
         ?>    
 

@@ -5,17 +5,18 @@
         <link href="/recursos/css/posiciones.css" rel="stylesheet"/>
         <?php   require ('Conexion.php'); ?>
     </head>
-    <body >
+    <body style = "background-color: #e6e6fa; margin: 0 auto; text-align:center;">
         <?php
         $Partido = 1;
         if (isset($_GET['Partido'])) {
             $Partido = $_GET['Partido'];
         }
         $partido = recuperarUnPartidos($Partido);
-        echo '<div>Jornada ' . $partido['Jornada'] . ' Fecha ' . $partido['Fecha'] . '</div><div><lable>' . $partido['Local'] . ' </lable> <img src = "imagenes/' . $partido['Local'] . '.gif" style=""/>' .
-        $partido['GolesLocal'] . '-' . $partido['GolesVisita'] . '<img src = "imagenes/' . $partido['Visita'] . '.gif" style="margin:0 auto"/><lable>' . $partido['Visita'] . ' </lable><div>';
+        echo '<div><h3>Jornada ' . $partido['Jornada'] . ' Fecha ' . $partido['Fecha'] . '</h3></div>'
+            . '<div><label>' . $partido['Local'] . ' </label> <img src = "imagenes/' . $partido['Local'] . '.gif" style=""/><b>   ' .
+        $partido['GolesLocal'] . '-' . $partido['GolesVisita'] . '   </b><img src = "imagenes/' . $partido['Visita'] . '.gif" style="margin:0 auto"/><label>' . $partido['Visita'] . ' </label><div>';
         ?>
-        <div id="map" style="width:400px;height:400px;background:yellow"></div> 
+        <div id="map" style="margin: 0 auto;width:700px;height:450px;background:yellow"></div> 
         <span id="duracion"></span>
          
         <?php
@@ -57,7 +58,7 @@
                             distance += leg.distance.text;
                             duration += leg.duration.value;
                         });
-                        document.getElementById("duracion").innerHTML = "duracion: " + calcularHoras(duration) + " distancia " + distance;
+                        document.getElementById("duracion").innerHTML = "<h3>Duración: " + calcularHoras(duration) + "<br> Distancia " + distance+"</h3>";
                     } else {
                         window.alert('Ha fallat la comunicació amb el mapa a causa de: ' + status);
                     }
@@ -115,10 +116,6 @@
                 });
             }
 
-
-
-
-
             function calcularHoras(duracion) {
                 var numero = ((duracion / 60) / 60);
                 var horas = Math.trunc(numero);
@@ -131,9 +128,7 @@
         </script>
 
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAqhBwQyP78-NXPHNPNw9LGmNEkPUYlDYM&callback=initMap"></script>
-        <?php
-
-      
+        <?php    
 
         function recuperarUnPartidos($id) {
             $con = establecerConexion();
