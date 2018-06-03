@@ -15,7 +15,7 @@
                 $equipo = $_GET['Equipo'];
             }
             echo '<div style ="text-align: center"><img src = "../ProyectoFundaWeb/imagenes/BundesLiga.png" style="margin:0 auto"/></div>';
-            echo '<h3 style ="text-align: center">'.$equipo.'</h3>';
+            echo '<h3 style ="text-align: center">' . $equipo . '</h3>';
             echo '<table style="margin:0 auto" border = 2 id = "tabla-principal">
                 <thead>
                 <tr style = "background-color: #ffffcc">            
@@ -37,9 +37,9 @@
                  <td>' . $part['Local'] . '</td>  
                  <td>' . $part['Visita'] . '</td>  
                  <td>' . $part['GolesLocal'] . '-' . $part['GolesVisita'] . '</td>  
-                  <td><a href="../ProyectoFundaWeb/VerMapa.php?Partido=' . $part['Id'] . '""><img src = "imagenes/mapa.png"/></a></td>'.
-                        '<td>'. CalculaDistancia($part['Local'] , $part['Visita']).'</td>';
-                  
+                  <td><a href="../ProyectoFundaWeb/VerMapa.php?Partido=' . $part['Id'] . '""><img src = "imagenes/mapa.png"/></a></td>' .
+                '<td>' . CalculaDistancia($part['Local'], $part['Visita']) . '</td>';
+
 //<td><a href="../ProyectoFundaWeb/VerMapa.php?Partido='. $part['id'] .'""><img src = "imagenes/mapa.png"/></a></td>';
                 echo '</tr>';
             }
@@ -95,6 +95,7 @@
                 return -1;
             }
             $Distancia = ( 6371 * acos((cos(deg2rad($LatL)) ) * (cos(deg2rad($LatV))) * (cos(deg2rad($LonV) - deg2rad($LonL)) ) + ((sin(deg2rad($LatL))) * (sin(deg2rad($LatV))))) );
+            $Distancia = number_format($Distancia, 0, '.', ',');
             return $Distancia;
         }
         ?>
