@@ -102,13 +102,6 @@
             }
 
             echo '</tr>';
-//            foreach ($equipos as $equipoVisita) {
-//                if ($equipoLocal['Nombre'] === $equipoVisita['Nombre']) {
-//                    echo '<td>-</td>';
-//                } else {
-//                    echo '<td>'.recuperarPartidos($equipoLocal['Nombre'], 0).'</td>';
-//                }
-//            }
         }
         echo '</tbody>'
         . '</table>';

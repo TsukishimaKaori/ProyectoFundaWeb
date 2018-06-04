@@ -31,14 +31,15 @@
                 <tbody style = "background-color: white">';
             $partidos = recuperarPartidos($equipo);
             foreach ($partidos as $part) {
+                $distancia = CalculaDistancia($part['Local'], $part['Visita']);
                 echo '<tr>
                  <td>' . $part['Jornada'] . '</td>  
                  <td>' . $part['Fecha'] . '</td>  
                  <td>' . $part['Local'] . '</td>  
                  <td>' . $part['Visita'] . '</td>  
                  <td>' . $part['GolesLocal'] . '-' . $part['GolesVisita'] . '</td>  
-                  <td><a href="../ProyectoFundaWeb/VerMapa.php?Partido=' . $part['Id'] . '""><img src = "imagenes/mapa.png"/></a></td>' .
-                '<td>' . CalculaDistancia($part['Local'], $part['Visita']) . '</td>';
+                  <td><a href="../ProyectoFundaWeb/VerMapa.php?Distancia='.$distancia.' & Partido=' . $part['Id'] . '""><img src = "imagenes/mapa.png"/></a></td>' .
+                '<td>' . $distancia . '</td>';
 
 //<td><a href="../ProyectoFundaWeb/VerMapa.php?Partido='. $part['id'] .'""><img src = "imagenes/mapa.png"/></a></td>';
                 echo '</tr>';

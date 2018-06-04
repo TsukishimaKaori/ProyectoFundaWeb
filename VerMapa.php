@@ -15,9 +15,11 @@
         echo '<div><h3>Jornada ' . $partido['Jornada'] . ' Fecha ' . $partido['Fecha'] . '</h3></div>'
             . '<div><label>' . $partido['Local'] . ' </label> <img src = "imagenes/' . $partido['Local'] . '.gif" style=""/><b>   ' .
         $partido['GolesLocal'] . '-' . $partido['GolesVisita'] . '   </b><img src = "imagenes/' . $partido['Visita'] . '.gif" style="margin:0 auto"/><label>' . $partido['Visita'] . ' </label><div>';
+        echo '<h3>Distancia:'.$_GET['Distancia'].'</h3>';
         ?>
-        <div id="map" style="margin: 0 auto;width:700px;height:450px;background:yellow"></div> 
         <span id="duracion"></span>
+        <div id="map" style="margin: 0 auto;width:700px;height:450px;background:yellow"></div> 
+        
          
         <?php
         $equipo1 = recuperarEquipos($partido['Local']);
@@ -58,7 +60,7 @@
                             distance += leg.distance.text;
                             duration += leg.duration.value;
                         });
-                        document.getElementById("duracion").innerHTML = "<h3>Duración: " + calcularHoras(duration) + "<br> Distancia " + distance+"</h3>";
+                        document.getElementById("duracion").innerHTML = "<h3>Duración: " + calcularHoras(duration) + "<br></h3>";
                     } else {
                         window.alert('Ha fallat la comunicació amb el mapa a causa de: ' + status);
                     }
@@ -137,7 +139,7 @@
                 exit();
             }
 
-            //if(isset($_GET['id'])){
+            //if(isset($_GET['id'])){  
             $strSQL = "SELECT * FROM `partidos` WHERE id='$id' ";
 
             //$strSQL = "SELECT * from juegos";
