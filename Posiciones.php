@@ -130,7 +130,7 @@
             echo '<input type="submit" value="Comparar varios equipos"/>';
             echo '</div>';
             echo '</form>';
-            echo '<div style = "margin: 0 44%;"><a href ="../ProyectoFundaWeb/Posiciones.php">Todos los resultados</a></div>';
+            echo '<div style = "margin: 0 44%;"><a href ="../ProyectoFundaWeb/Resultados.php">Todos los resultados</a></div>';
             echo '<div style = "margin: 0 43%;"><a href ="../ProyectoFundaWeb/DistanciaKilometros.php">Distancia en kilómetros</a></div>';
             }
 
